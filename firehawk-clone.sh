@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
+if [ $# -eq 0 ]; then
+    branch='master'
+else
+    branch="$1"
+fi
+echo "Using branch $branch"
+
 git submodule update --init --recursive
 cd firehawk
-git checkout master
+git checkout $branch
 git pull
 git submodule update --init --recursive
 cd ..
